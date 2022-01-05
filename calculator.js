@@ -177,52 +177,39 @@ function squareRoot() {
 
 // side bar functions
 
-function logNeper() {
-    let number = (rawEntry == "") ? previous : Number(rawEntry);
-    if (number >= 0) {
-        previous = Math.log(number);
-        output.innerHTML = previous;
-        resetBooleans();
-    } else {
-        alert("Neperian logarithme of a negative number doesn't exists");
-    }
-}
-
-function sinus() {
-    let answer = (rawEntry == "") ? Math.sin(previous) : Math.sin(Number(rawEntry));
-    previous = answer;
-    output.innerHTML = answer;
-    resetBooleans();
-}
-
-function cosinus() {
-    let answer = (rawEntry == "") ? Math.cos(previous) : Math.cos(Number(rawEntry));
-    previous = answer;
-    output.innerHTML = answer;
-    resetBooleans();
-}
-
-function percent() {
-    let answer = (rawEntry == "") ? (previous/100) : (Number(rawEntry)/100);
-    previous = answer;
-    output.innerHTML = answer;
-    resetBooleans();
-}
-
-function absol() {
-    let answer = (rawEntry == "") ? Math.abs(previous) : Math.abs(Number(rawEntry));
-    previous = answer;
-    output.innerHTML = answer;
-    resetBooleans();
-}
-
 function invert() {
     rawEntry=1;
     operator("/");
 }
 
-function modulo() {
-    let answer = (rawEntry == "") ? Math.cos(previous) : Math.cos(Number(rawEntry));
+function specCalc(option) {
+    let operand = (rawEntry == "") ? previous : Number(rawEntry);
+    let answer = 0;
+
+    switch (option) {
+        case "log" :
+            if (operand >= 0) {
+                answer = Math.log(operand);
+            } else {
+                alert("Neperian logarithme of a negative number doesn't exists");
+            }
+            break;
+        case "sin" :
+            answer = Math.sin(operand);
+            break;
+        case "cos" :
+            answer = Math.cos(operand);
+            break;
+        case "%" :
+            answer = operand / 100;
+            break;
+        case "abs" :
+            answer = Math.abs(operand);
+            break;
+        default :
+            console.log("reached default at specCalc switch");
+    }
+
     previous = answer;
     output.innerHTML = answer;
     resetBooleans();

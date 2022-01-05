@@ -78,7 +78,6 @@ function calculate() {
 }
 
 function reset() {
-    rawEntry="";
     previous = 0;
     savedOperation = "";
     output.innerHTML = "";
@@ -107,15 +106,16 @@ function negative() {
 }
 
 function delCurr() {
-    rawEntry = "";
     output.innerHTML = rawEntry;
     resetBooleans();
 }
 
+// reset all security booleans and clear the current Entry
 function resetBooleans() {
     isNegative = false;
     dotPressed = false;
     requestOpreator = false;
+    rawEntry="";
 }
 
 // scientific mode functions
@@ -126,8 +126,9 @@ function switchMode() {
     let container = document.getElementById("container");
     let string = scientificMode ? "grid" : "none";
     document.getElementById("scientific").style.display = string;
-    hidden.style.display = string;
+  
     if (string == "grid") {
+        hidden.style.display = string;
         hidden.className = "slideIn";
         container.className = "slideRight";
         setTimeout(() => {
@@ -138,6 +139,10 @@ function switchMode() {
         hidden.className = "slideOut";
         container.className = "slideLeft";
         setTimeout(() => {
+            hidden.style.display = string;
+        }, 500);
+        setTimeout(() => {
+            
             hidden.className = "";
             container.className = "";
         }, 600);
@@ -158,14 +163,25 @@ function square() {
     let answer = (rawEntry == "") ? Math.pow(Number(previous), 2) : Math.pow(Number(rawEntry), 2);
     previous = answer;
     output.innerHTML = answer;
-    rawEntry = "";
     resetBooleans();
 }
 
 function squareRoot() {
-    let answer = (rawEntry == "") ? Math.sqrt(Number(previous), 2) : Math.sqrt(Number(rawEntry), 2);
+    let answer = (rawEntry == "") ? Math.sqrt(previous) : Math.sqrt(Number(rawEntry));
     previous = answer;
     output.innerHTML = answer;
-    rawEntry = "";
     resetBooleans();
+}
+
+// side bar functions
+
+function logNeper() {
+    let number = (rawEntry == "") ? previous : Number(rawEntry);
+    if (number >= 0) {
+        previous = Math.log(number);
+        output.innerHTML = previous;
+        resetBooleans();
+    } else {
+        alert("Neperian logarithme of a negative number doesn't exists");
+    }
 }

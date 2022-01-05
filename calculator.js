@@ -25,14 +25,13 @@ function addDot() {
 }
 
 function operator(operation) {
-    savedOperation = operation;
-    output.innerHTML = operation;
-    dotPressed = false;
-    requestOperator = false;
-    isNegative = false;
     if (rawEntry != "") {
+        savedOperation = operation;
+        output.innerHTML = operation;
         previous = Number(rawEntry);
-        rawEntry = "";
+        resetBooleans();
+    } else {
+        alert("Please enter a number first");
     }
 }
 
@@ -64,6 +63,9 @@ function calculate() {
                 break;
             case "^" :
                 answer = Math.pow(previous, operand);
+                break;
+            case "%" :
+                answer = previous % operand;
                 break;
             default :
                 answer = operand;
@@ -184,4 +186,44 @@ function logNeper() {
     } else {
         alert("Neperian logarithme of a negative number doesn't exists");
     }
+}
+
+function sinus() {
+    let answer = (rawEntry == "") ? Math.sin(previous) : Math.sin(Number(rawEntry));
+    previous = answer;
+    output.innerHTML = answer;
+    resetBooleans();
+}
+
+function cosinus() {
+    let answer = (rawEntry == "") ? Math.cos(previous) : Math.cos(Number(rawEntry));
+    previous = answer;
+    output.innerHTML = answer;
+    resetBooleans();
+}
+
+function percent() {
+    let answer = (rawEntry == "") ? (previous/100) : (Number(rawEntry)/100);
+    previous = answer;
+    output.innerHTML = answer;
+    resetBooleans();
+}
+
+function absol() {
+    let answer = (rawEntry == "") ? Math.abs(previous) : Math.abs(Number(rawEntry));
+    previous = answer;
+    output.innerHTML = answer;
+    resetBooleans();
+}
+
+function invert() {
+    rawEntry=1;
+    operator("/");
+}
+
+function modulo() {
+    let answer = (rawEntry == "") ? Math.cos(previous) : Math.cos(Number(rawEntry));
+    previous = answer;
+    output.innerHTML = answer;
+    resetBooleans();
 }

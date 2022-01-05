@@ -1,0 +1,166 @@
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+#container {
+  z-index: 2;
+  background-color: rgb(92, 89, 86);
+  border-left: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+  height: 70vh;
+}
+
+#screen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 20%;
+  width: 84%;
+  background-color: rgba(153, 145, 143, 0.87);
+  margin: 5%;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0 3%;
+}
+
+#options {
+  display: flex;
+  height: 10%;
+  width: 90%;
+  flex-direction: row-reverse;
+}
+
+#scientific {
+  grid-template-columns: repeat(4, 1fr);
+  width: 90%;
+  height: 15%;
+  display: none;
+}
+
+#keyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  width: 90%;
+  height: 70%;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  background-color: rgb(141, 136, 129);
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.buttons:hover,
+.optBtn:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+.buttons:active,
+.optBtn:active {
+  box-shadow: inset 2px 2px 5px -2px black;
+}
+
+.optBtn {
+  height: 70%;
+  width: 40%;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: rgb(141, 136, 129);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scientific div,
+#hiddenContainer div {
+  background-color: rgb(48, 46, 44);
+  color: white;
+}
+
+#hiddenContainer {
+  z-index: 1;
+  background-color: rgb(92, 89, 86);
+  width: 6vw;
+  height: 70vh;
+  grid-template-rows: repeat(7, 1fr);
+  display: none;
+}
+
+#hiddenContainer div {
+  margin: 8% 7% 8% 7%;
+}
+
+/***************** ANIMATIONS ********************/
+
+.slideIn {
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translate(6vw);
+  }
+  100% {
+    transform: translate(0vw);
+  }
+}
+
+.slideOut {
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translate(-6vw);
+  }
+  100% {
+    transform: translate(0vw);
+  }
+}
+
+.slideRight {
+  animation-name: slideRight;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translate(-3vw);
+  }
+  100% {
+    transform: translate(0vw);
+  }
+}
+
+.slideLeft {
+  animation-name: slideLeft;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translate(3vw);
+  }
+  100% {
+    transform: translate(0vw);
+  }
+}

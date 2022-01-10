@@ -108,8 +108,8 @@ function negative() {
 }
 
 function delCurr() {
-    output.innerHTML = rawEntry;
     resetBooleans();
+    output.innerHTML = rawEntry;
 }
 
 // reset all security booleans and clear the current Entry

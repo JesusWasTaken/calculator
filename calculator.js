@@ -88,6 +88,9 @@ function reset() {
 
 function del() {
     let ans ="";
+    if (rawEntry[rawEntry.length-1] == ".") {
+        dotPressed = false;
+    }
     for(let i = 0; i<rawEntry.length -1;i++) {
         ans += rawEntry[i];
     }
@@ -99,11 +102,10 @@ function del() {
 }
 
 function negative() {
-    if (isNegative == false && rawEntry == "") {
-        rawEntry += "-";
-        isNegative = true;
+    if (rawEntry[0] == "-") {
+        rawEntry = rawEntry.substring(1,rawEntry.length);
     } else {
-        alert("You can't put a negative sign here, it must be at the beginning of a number");
+        rawEntry = "-"+rawEntry;
     }
 }
 
